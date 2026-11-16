@@ -1,6 +1,6 @@
 # DARRA-IER
 
-Official implementation of **DARRA: A Distortion-Aware Residual Recalibration Adapter for MLLM-based No-Reference Image Quality Assessment**, with Inverted Energy Reweighting (IER).
+Official implementation of **DARRA: A Distortion-Aware Residual Recalibration Adapter for MLLM-based No-Reference Image Quality Assessment**.
 
 **Paper:** *Signal Processing*, 251 (2027), 110859 · [DOI: 10.1016/j.sigpro.2026.110859](https://doi.org/10.1016/j.sigpro.2026.110859)
 
@@ -10,16 +10,10 @@ DARRA adapts the mPLUG-Owl2 vision encoder (blocks 13–24) for no-reference ima
 
 Python 3.10, CUDA and a compatible PyTorch environment are required.
 
-```bash
-pip install -e '.[test]'
-python -m pytest -q tests/
-```
-
-The pretrained **mPLUG-Owl2-LLaMA2-7B** model, IQA datasets and trained checkpoints are **not included**. Place the model in `ModelZoo/mplug-owl2-llama2-7b/` and datasets in `Data-DARRA/`, or change the paths below.
 
 ## Prepare data
 
-For KonIQ, SPAQ and KADID10K, prepare `split.json` and `mos.json`, adjust `build_soft_labels/config.json`, and generate soft labels:
+For KonIQ, SPAQ and KADID10K, prepare `split.json` and `mos.json`, adjust `build_soft_labels/config.json`, and generate labels:
 
 ```bash
 python build_soft_labels/gen_soft_label.py --data-root Data-DARRA
@@ -31,8 +25,8 @@ We used two training configurations:
 
 | Configuration | Hardware | Training mode |
 | --- | --- | --- |
-| **Full fine-tuning (used in our experiments)** | **8 × NVIDIA RTX 4090 (24 GB)** | Full-parameter fine-tuning |
-| **LoRA fine-tuning** | **2 × NVIDIA RTX 4090 (24 GB)** | DARRA + language LoRA, with the pretrained backbone frozen |
+| **Full fine-tuning (used in our experiments)** | **8 × NVIDIA RTX 4090** | Full-parameter fine-tuning |
+| **LoRA fine-tuning** | **2 × NVIDIA RTX 4090** | DARRA + language LoRA, with the pretrained backbone frozen |
 
 ### LoRA: 2 × RTX 4090
 
@@ -58,17 +52,6 @@ Default LoRA rank is **64** (alpha **128**); the effective global batch size is 
 
 ## Inference & evaluation
 
-```bash
-python run_infer_darra.py \
-  --checkpoint checkpoints/DARRA-IER \
-  --model-base ModelZoo/mplug-owl2-llama2-7b \
-  --preprocessor-path preprocessor \
-  --data-root Data-DARRA \
-  --save-dir results/DARRA-IER --gpu-id 0
-
-python -m src.evaluate.metrics \
-  --pred-paths results/DARRA-IER/test_koniq_2k_new.jsonl
-```
 
 Evaluation metrics include **SRCC, PLCC, KRCC, MAE, and RMSE**. Ensure that ground-truth MOS and predictions use consistent score scales and directions.
 
