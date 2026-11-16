@@ -15,9 +15,7 @@ Python 3.10, CUDA and a compatible PyTorch environment are required.
 
 For KonIQ, SPAQ and KADID10K, prepare `split.json` and `mos.json`, adjust `build_soft_labels/config.json`, and generate labels:
 
-```bash
-python build_soft_labels/gen_soft_label.py --data-root Data-DARRA
-```
+
 
 ## Training
 
@@ -32,17 +30,7 @@ We used two training configurations:
 
 The following command uses the **LoRA training entrypoint currently included in this repository**:
 
-```bash
-CUDA_VISIBLE_DEVICES=0,1 torchrun --standalone --nproc_per_node=2 \
-  -m src.train.train_darra \
-  --model-base ModelZoo/mplug-owl2-llama2-7b \
-  --preprocessor-path preprocessor \
-  --data-root Data-DARRA \
-  --output-dir checkpoints/DARRA-IER \
-  --per-device-batch-size 1 \
-  --gradient-accumulation-steps 32 \
-  --epochs 4
-```
+
 
 Default LoRA rank is **64** (alpha **128**); the effective global batch size is **64**. Actual memory use depends on the environment.
 
