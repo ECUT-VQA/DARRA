@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "darra-ier-iqa"
+version = "1.0.0"
+description = "Distortion-Aware Residual Recalibration Adapter for no-reference IQA"
+readme = "README.md"
+requires-python = ">=3.10,<3.12"
+license = {file = "LICENSE"}
+dependencies = [
+  "torch==2.0.1", "torchvision==0.15.2",
+  "transformers==4.36.1", "tokenizers==0.15.0",
+  "accelerate==0.21.0", "peft==0.4.0", "sentencepiece==0.1.99",
+  "numpy<2", "scipy", "Pillow", "requests", "tqdm",
+  "einops==0.6.1", "einops-exts==0.0.4", "decord",
+  "pydantic>=1,<2", "timm==0.6.13"
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7,<9"]
+quant = ["bitsandbytes>=0.41,<0.44"]
+
+[tool.setuptools.packages.find]
+include = ["src", "src.*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
