@@ -78,6 +78,4 @@ If you use this work, please cite:
 
 > T. Wang, H. Luo, C. Yang, and H. Jia, “DARRA: A distortion-aware residual recalibration adapter for MLLM-based no-reference image quality assessment,” *Signal Processing*, vol. 251, art. 110859, 2027. https://doi.org/10.1016/j.sigpro.2026.110859
 
-## Acknowledgment & licensing
 
-This implementation builds on **mPLUG-Owl2** and **DeQA-Score**. Respect upstream code, model, tokenizer, and dataset licenses; the repository's current `LICENSE` attribution should be reviewed before redistribution.
