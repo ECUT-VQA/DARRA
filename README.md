@@ -16,6 +16,12 @@ Python 3.10, CUDA and a compatible PyTorch environment are required.
 For KonIQ, SPAQ and KADID10K, prepare `split.json` and `mos.json`, adjust `build_soft_labels/config.json`, and generate labels:
 
 
+## Framework
+
+![DARRA Architecture](DARRA_framework.png)
+
+*Overview of DARRA. The distortion-aware residual recalibration adapter is inserted into ViT blocks 13–24, incorporating structure and residual streams, inverted energy reweighting (IER), and cross-stream gating.*
+  
 
 ## Training
 
