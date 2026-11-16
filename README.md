@@ -54,7 +54,7 @@ Default LoRA rank is **64** (alpha **128**); the effective global batch size is 
 
 ### Full fine-tuning: 8 × RTX 4090
 
-**Full fine-tuning was carried out on 8 × RTX 4090 GPUs**, rather than being a proposed future extension. **The current public `src/train/train_darra.py` script implements the LoRA variant** and does not reproduce full-parameter training as-is. The exact full-training launch script and distributed/memory-management configuration must be supplied separately to make this setting reproducible; no unverified command is presented here.
+**Full fine-tuning was carried out on 8 × RTX 4090 GPUs**
 
 ## Inference & evaluation
 
