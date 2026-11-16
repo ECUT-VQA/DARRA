@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use DARRA-IER, please cite the associated research article."
+title: "DARRA-IER: Distortion-Aware Residual Recalibration Adapter implementation"
+authors:
+  - family-names: Wang
+    given-names: Tonghan
+  - family-names: Luo
+    given-names: Hao
+  - family-names: Yang
+    given-names: Chunfeng
+  - family-names: Jia
+    given-names: Huizhen
+repository-code: "https://github.com/ECUT-VQA/DARRA"
+preferred-citation:
+  type: article
+  title: "DARRA: A distortion-aware residual recalibration adapter for MLLM-based no-reference image quality assessment"
+  authors:
+    - family-names: Wang
+      given-names: Tonghan
+    - family-names: Luo
+      given-names: Hao
+    - family-names: Yang
+      given-names: Chunfeng
+    - family-names: Jia
+      given-names: Huizhen
+  journal: "Signal Processing"
+  volume: "251"
+  year: 2027
+  doi: "10.1016/j.sigpro.2026.110859"
